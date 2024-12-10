@@ -19,8 +19,7 @@
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
 
-                <TextBlock Text="введите для поиска" TextAlignment="Left" Width="100" FontSize="15"></TextBlock>
-
+               
                 <TextBox Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged" Width="150" FontSize="15"></TextBox>
               
             </StackPanel>
@@ -29,7 +28,7 @@
             <StackPanel Orientation="Horizontal" Margin="10">
 
 
-                <ComboBox Name="ComboSort"  SelectionChanged="ComboSort_SelectionChanged" Width="150" FontSize="15" >
+                <ComboBox Name="ComboSort"  SelectionChanged="ComboSort_SelectionChanged" Width="270" FontSize="15" >
                     <TextBlock>Сортировка</TextBlock>
                     <TextBlock>наименование по возрастанию</TextBlock>
                     <TextBlock>наименование по убывнию</TextBlock>
@@ -66,7 +65,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="400"/>
                             <ColumnDefinition Width="70"/>
                             <ColumnDefinition Width="Auto"/>
@@ -83,7 +82,7 @@
                         </Grid.RowDefinitions>
 
 
-                        <Image Width="100" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.RowSpan="4" >
+                        <Image Width="120" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.RowSpan="4" Margin="7">
                             <Image.Source>
                                 <Binding Path="Logo">
                                     <Binding.TargetNullValue>
@@ -99,8 +98,8 @@
 
 
 
-                        <TextBlock Text="{Binding AgentType.Title, StringFormat={}{0} |}"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" FontSize="15" TextWrapping="Wrap"></TextBlock>
-                        <TextBlock Text="{Binding Title}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" FontSize="15"></TextBlock>
+                        <TextBlock Text="{Binding AgentType.Title, StringFormat={}{0} |}"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding Title}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding ProductCount, StringFormat={}{0} продаж за год}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="15" />
                       
                         <TextBlock Text="{Binding Phone}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="15" />

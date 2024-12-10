@@ -38,6 +38,7 @@ namespace Бебко_Глазки_save
 
         }
 
+  
 
         private void UpdateServices()
         {
@@ -81,11 +82,20 @@ namespace Бебко_Глазки_save
 
 
 
-            currentAgents = currentAgents.Where(p => p.Title.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+            // Приводим текст поиска к нижнему регистру один раз
+     
+            string searchText = TBoxSearch.Text.ToLower().Replace("+", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
+            // Фильтруем список агентов по всем трем полям одновременно
+            currentAgents = currentAgents
+                .Where(p => p.Title.ToLower().Contains(searchText) ||
+                            p.Phone.Replace("+", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "").Contains(searchText) ||
+                            p.Email.ToLower().Contains(searchText))
+                .ToList();
 
-            AgentsListView.ItemsSource = currentAgents.ToList();
+            // Обновляем источник данных для списка агентов
+            AgentsListView.ItemsSource = currentAgents;
 
-        
+
 
 
 
@@ -145,6 +155,9 @@ namespace Бебко_Глазки_save
 
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+          
+
             UpdateServices();
         }
 
