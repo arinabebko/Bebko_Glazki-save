@@ -116,6 +116,30 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-       
+
+
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+
+            <TextBlock Name="TBCount" FontSize="20" Height="20"></TextBlock>
+            <TextBlock Name="TBAllRecords" FontSize="20" Height="20"></TextBlock>
+
+            <Button Name="LeftDirButton" Content="&lt;" FontSize="15" Click="LeftDirButton_Click" Width="20" Height="20"></Button>
+
+            <ListBox FontSize="20 " Name="PageListBox">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" MouseUp="WrapPanel_MouseUp"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+
+            <Button Name="RightDirButton" Content="&gt;" FontSize="15" Click="RightDirButton_Click" Width="20" Height="20"></Button>
+
+        </StackPanel>
+        
+        
+        
     </Grid>
 </Page>
