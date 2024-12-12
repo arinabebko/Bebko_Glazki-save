@@ -37,6 +37,7 @@ namespace Бебко_Глазки_save
             InitializeComponent();
             var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
             AgentsListView.ItemsSource = currentAgents;
+
             //   var currentProductSale = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
             //AgentsListView.ItemsSource = currentProductSale;
             ComboType.SelectedIndex = 0;
@@ -156,10 +157,10 @@ namespace Бебко_Глазки_save
 
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage());
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+       //     Manager.MainFrame.Navigate(new AddEditPage());
+        //}
 
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -301,6 +302,63 @@ namespace Бебко_Глазки_save
         private void WrapPanel_MouseUp(object sender, MouseButtonEventArgs e)
         {
             ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString())-1);
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Agent));
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Agent));
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var currentAgent = (sender as Button).DataContext as Agent;
+
+            var currentProductSale = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
+            currentProductSale = currentProductSale.Where(p => p.AgentID == currentAgent.ID).ToList();
+
+            if (currentProductSale.Count != 0)
+                MessageBox.Show("Невозможно выполнить удаление, так как существует запись на этого агента");
+            else
+            {
+
+
+
+
+                if (MessageBox.Show("Вы точно хотите выполнить удаление? ", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        BebkoГлазкиSaveEntities.GetContext().Agent.Remove(currentAgent);
+                       // BebkoГлазкиSaveEntities.GetContext().ProductSale.Remove(currentProductSale);
+
+                        BebkoГлазкиSaveEntities.GetContext().SaveChanges();
+
+                        AgentsListView.ItemsSource = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
+
+                        AgentsListView.ItemsSource = CurrentPageList;
+                        AgentsListView.Items.Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+            }
+            
+            */
+
+
+        }
+
+        private void BtnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

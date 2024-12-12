@@ -33,6 +33,8 @@ namespace Бебко_Глазки_save
         public string Email { get; set; }
         public string Logo { get; set; }
         public int Priority { get; set; }
+
+        public string AgentTyopT => AgentType.Title;
     
         public virtual AgentType AgentType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

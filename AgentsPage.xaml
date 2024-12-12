@@ -51,8 +51,8 @@
                     <TextBlock>ОАО</TextBlock>
                     <TextBlock>ПАО</TextBlock>
                 </ComboBox>
-               
-           
+
+                <Button Name="BtnAdd" HorizontalAlignment="Right" Margin="20,0,10,0" Height="30" Width="100" Content="добавить" Click="BtnAdd_Click"></Button>
 
             </StackPanel>
         </WrapPanel>
@@ -106,9 +106,20 @@
                         <TextBlock Text="{Binding Priority, StringFormat='приоритетность: {0}'}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="15"  Grid.ColumnSpan="3" />
                       
                         <TextBlock Text="10 %" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" FontSize="30" />
-
-
+                        
+                        
                       
+                        
+                        
+                        
+                        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <Button Content="редактировать" Name="BtnEdit" Click="BtnEdit_Click" Width="200" Height="25"></Button>
+                        
+                       
+                        </StackPanel>
+
+
+
 
 
                     </Grid>
