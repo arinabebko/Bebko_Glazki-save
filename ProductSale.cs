@@ -22,5 +22,20 @@ namespace Бебко_Глазки_save
     
         public virtual Agent Agent { get; set; }
         public virtual Product Product { get; set; }
+
+         public decimal Stoimost
+        {
+
+            get
+            {
+                // Проверяем, что продукт не равен null и у него есть цена
+                decimal d;
+                if (Product != null && Product.MinCostForAgent > 0)
+                {
+                    return Product.MinCostForAgent * this.ProductCount;
+                }
+                return 0; // Возвращаем 0, если продукт null или цена не положительная
+            }
+        }
     }
 }

@@ -34,7 +34,40 @@ namespace Бебко_Глазки_save
         public string Logo { get; set; }
         public int Priority { get; set; }
 
-        public string AgentTyopT => AgentType.Title;
+        //public string AgentTyopT => AgentType.Title;
+        public decimal Prod
+        {
+            get
+            {
+                decimal p = 0;
+                foreach(ProductSale sales in ProductSale)
+                {
+                    p = p + sales.Stoimost;
+                }
+            
+                return p;
+            }
+        }
+
+        public int Discount
+        {
+           
+            get
+            {
+                 int p;
+        p = 0;
+                if (Prod > 10000 && Prod <= 50000)
+                    p = 5;
+
+                if (Prod > 50000 && Prod <= 150000)
+                    p = 5;
+                if (Prod > 150000 && Prod <= 500000)
+                    p = 5;
+                if (Prod > 500000 )
+                    p = 5;
+                return p;
+            }
+        }
     
         public virtual AgentType AgentType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

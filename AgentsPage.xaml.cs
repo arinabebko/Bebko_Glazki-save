@@ -36,8 +36,9 @@ namespace Бебко_Глазки_save
         {
             InitializeComponent();
             var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
+          //  var sales = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
             AgentsListView.ItemsSource = currentAgents;
-
+            this.DataContext = currentAgents;
             //   var currentProductSale = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
             //AgentsListView.ItemsSource = currentProductSale;
             ComboType.SelectedIndex = 0;
@@ -355,7 +356,7 @@ namespace Бебко_Глазки_save
 
 
         }
-
+ 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
 
