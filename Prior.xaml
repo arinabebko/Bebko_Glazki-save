@@ -1,0 +1,16 @@
+﻿<Window x:Class="Бебко_Глазки_save.Prior"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Бебко_Глазки_save"
+        mc:Ignorable="d"
+         Name="WindowPrior" Title="ChangePrior" Height="250" Width="300" FontFamily="Century Gothic" FontSize="15">
+    <Grid >
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Text="На какой приоритет поменять?    " HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+            <TextBox Name="TBChangePrior" Width="200" Height="30" Margin="20,5,0,0" TextChanged="TBChangePrior_TextChanged"  ></TextBox>
+        </WrapPanel>
+        <Button Name="BtnChangePrior" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Height="30" Content="Изменить" FontSize="15" Margin="0,0,0,10" Click="BtnChangePrior_Click"></Button>
+    </Grid>
+</Window>

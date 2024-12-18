@@ -52,21 +52,19 @@
                     <TextBlock>ПАО</TextBlock>
                 </ComboBox>
 
-                <Button Name="BtnAdd" HorizontalAlignment="Right" Margin="20,0,10,0" Height="30" Width="100" Content="добавить" Click="BtnAdd_Click"></Button>
-
+              
             </StackPanel>
         </WrapPanel>
 
 
-
-        <ListView Name="AgentsListView" Grid.Row="2">
+        <ListView Name="AgentsListView" Grid.Row="2" Grid.RowSpan="4" Margin="0,0,0,40" SelectionChanged="AgentsListView_SelectionChanged" SelectionMode="Multiple" > 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{Binding FontStyle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="329"/>
                             <ColumnDefinition Width="70"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition></ColumnDefinition>
@@ -74,7 +72,7 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -99,13 +97,13 @@
 
 
                         <TextBlock Text="{Binding AgentType.Title, StringFormat={}{0} |}"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
-                        <TextBlock Text="{Binding Title}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                        <TextBlock Text="{Binding Title}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" FontSize="20" Grid.ColumnSpan="4"></TextBlock >
                         <TextBlock Text="{Binding Prod, StringFormat={}{0} продаж за год}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"  Grid.ColumnSpan="3" FontSize="15" />
                        
                         <TextBlock Text="{Binding Phone}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="15" />
                         <TextBlock Text="{Binding Priority, StringFormat='приоритетность: {0}'}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="15"  Grid.ColumnSpan="3" />
 
-                        <TextBlock Text="{Binding Discount, StringFormat={}{0} %}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Grid.ColumnSpan="3" FontSize="30" >
+                        <TextBlock Text="{Binding Discount, StringFormat={}{0} %}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Grid.ColumnSpan="3" FontSize="30" Margin="0,0,15,0" >
                             
                         </TextBlock>
 
@@ -114,8 +112,8 @@
 
 
 
-                        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Left" >
-                            <Button Content="редактировать" Name="BtnEdit" Click="BtnEdit_Click" Width="200" Height="25"></Button>
+                        <StackPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" >
+                            <Button Content="редактировать" Name="BtnEdit" Click="BtnEdit_Click" Width="200" Height="30" Margin="10"></Button>
                         
                        
                         </StackPanel>
@@ -151,8 +149,18 @@
             <Button Name="RightDirButton" Content="&gt;" FontSize="15" Click="RightDirButton_Click" Width="20" Height="20"></Button>
 
         </StackPanel>
-        
-        
-        
+
+
+
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="left" Orientation="Horizontal">
+            
+            <Button Name="BtnAdd" HorizontalAlignment="Left" Margin="20,0,10,0" Height="30" Width="100" Content="добавить" Click="BtnAdd_Click"></Button>
+            <Button Name="BtnChangePrior" Height="30" Width="240" Content="изменить приоритет" Click="BtnChangePrior_Click" Visibility="Hidden"></Button>
+
+        </StackPanel>
+
+
+
     </Grid>
 </Page>

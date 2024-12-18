@@ -361,5 +361,33 @@ namespace Бебко_Глазки_save
         {
 
         }
+
+        private void BtnChangePrior_Click(object sender, RoutedEventArgs e)
+        {
+            //  MessageBox.Show("damn");
+            var selectedAgents = AgentsListView.SelectedItems.Cast<Agent>().ToList();
+
+            Prior priorWindow = new Prior(selectedAgents);
+    
+    // Открываем его как модальное окно
+    priorWindow.ShowDialog();
+
+
+
+
+
+        }
+
+  
+
+        private void AgentsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AgentsListView.SelectedItems.Count > 1)
+            {
+                BtnChangePrior.Visibility = Visibility.Visible;
+            }
+            else
+                BtnChangePrior.Visibility = Visibility.Hidden;
+        }
     }
 }

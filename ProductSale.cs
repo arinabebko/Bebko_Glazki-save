@@ -29,7 +29,7 @@ namespace Бебко_Глазки_save
             get
             {
                 // Проверяем, что продукт не равен null и у него есть цена
-                decimal d;
+                
                 if (Product != null && Product.MinCostForAgent > 0)
                 {
                     return Product.MinCostForAgent * this.ProductCount;

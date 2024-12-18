@@ -11,7 +11,8 @@ namespace Бебко_Глазки_save
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class Agent
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -60,11 +61,11 @@ namespace Бебко_Глазки_save
                     p = 5;
 
                 if (Prod > 50000 && Prod <= 150000)
-                    p = 5;
+                    p = 10;
                 if (Prod > 150000 && Prod <= 500000)
-                    p = 5;
+                    p = 20;
                 if (Prod > 500000 )
-                    p = 5;
+                    p = 25;
                 return p;
             }
         }
@@ -76,5 +77,21 @@ namespace Бебко_Глазки_save
         public virtual ICollection<ProductSale> ProductSale { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shop> Shop { get; set; }
+
+        public SolidColorBrush FontStyle
+        {
+            get
+            {
+                if (Discount >= 25)
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen");
+                }
+                else
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("White");
+                }
+            }
+        }
+
     }
 }
