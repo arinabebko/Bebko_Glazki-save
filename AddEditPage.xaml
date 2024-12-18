@@ -26,7 +26,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Наименование" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"></TextBlock>
-            <TextBox Text="{Binding Title}" FontSize="15" Height="20" Width="400"></TextBox>
+            <TextBox Text="{Binding Title}" FontSize="15" Height="20" Width="400" TextChanged="TextBox_TextChanged"></TextBox>
 
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
@@ -59,7 +59,7 @@
 
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Тип агента" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"></TextBlock>
-            <ComboBox FontSize="15" Height="25" Width="100" Name="ComboAgentType"  SelectedValuePath="ID"  SelectedValue="{Binding AgentTypeID, Mode=TwoWay}" >
+            <ComboBox FontSize="15" Height="25" Width="100" Name="ComboAgentType"  SelectedValuePath="ID"  SelectedValue="{Binding AgentTypeID, Mode=TwoWay}" SelectionChanged="ComboAgentType_SelectionChanged" >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         
@@ -115,6 +115,9 @@
         <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal">
             <Button Content="Сохранить" Name="SaveBtn" Margin="5" Click="SaveBtn_Click"></Button>
             <Button Content="Удалить" Name="DeleteBtn" Margin="5" Click="DeleteBtn_Click"  Opacity="{Binding ID}"></Button>
+            <Button Content="продукты" Name="BtnRealiz" Click="BtnRealiz_Click"  Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" ></Button>
+
+
         </StackPanel>
 
 

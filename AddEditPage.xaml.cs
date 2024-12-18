@@ -46,7 +46,7 @@ namespace Бебко_Глазки_save
             LoadAgentTypes();
 
         }
-
+     
 
         private void LoadAgentTypes()
         {
@@ -229,6 +229,22 @@ namespace Бебко_Глазки_save
 
 
             
+        }
+
+        private void ComboAgentType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnRealiz_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new History (currentAgent));
+        
         }
     }
 }

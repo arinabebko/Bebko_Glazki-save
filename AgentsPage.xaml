@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Бебко_Глазки_save"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AgentsPage">
+      Title="AgentsPage" FontFamily="Century Gothic">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -112,13 +112,13 @@
 
 
 
-                        <StackPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <WrapPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" >
                             <Button Content="редактировать" Name="BtnEdit" Click="BtnEdit_Click" Width="200" Height="30" Margin="10"></Button>
-                        
-                       
-                        </StackPanel>
+
+                        </WrapPanel>
 
 
+                        <Button Content="продукты" Name="BtnRealiz" Click="BtnRealiz_Click"  Width="200" Height="30" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" ></Button>
 
 
 

@@ -390,5 +390,10 @@ namespace Бебко_Глазки_save
             else
                 BtnChangePrior.Visibility = Visibility.Hidden;
         }
+
+        private void BtnRealiz_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new History((sender as Button).DataContext as Agent));
+        }
     }
 }
