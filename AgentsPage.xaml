@@ -71,7 +71,7 @@
 
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -80,7 +80,7 @@
                         </Grid.RowDefinitions>
 
 
-                        <Image Width="120" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.RowSpan="4" Margin="7">
+                        <Image Width="120" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.RowSpan="4" Margin="7" >
                             <Image.Source>
                                 <Binding Path="Logo">
                                     <Binding.TargetNullValue>

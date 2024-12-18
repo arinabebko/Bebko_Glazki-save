@@ -49,13 +49,6 @@ namespace Бебко_Глазки_save
 
 
 
-
-
-
-
-
-
-
             var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
 
             DataContext = SelectedAgent;
@@ -107,9 +100,73 @@ namespace Бебко_Глазки_save
 
         }
 
+        private void LoadProductSalesForCurrentAgent()
+        {
+            var currentProductSales = BebkoГлазкиSaveEntities.GetContext().ProductSale
+                .Where(ps => ps.AgentID == currentAgent.ID) // Предполагается, что у ProductSale есть поле AgentID
+                .ToList();
+
+            // Устанавливаем источник данных для списка продаж
+            LVHistory.ItemsSource = currentProductSales;
+        }
+
+
+
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            // LVHistory.SelectedItems.delete();
+            //   var currentProductSale = (sender as Button).DataContext as Agent;
+            var selectedItems = LVHistory.SelectedItems.Cast<ProductSale>().ToList();
+            // var currentProductSale = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
 
+
+            if (selectedItems.Count == 0)
+            {
+                MessageBox.Show("Пожалуйста, выберите хотя бы один элемент для удаления.");
+                return;
+            }
+            else
+            {
+                if (MessageBox.Show("Вы точно хотите выполнить удаление? ", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var context = BebkoГлазкиSaveEntities.GetContext();
+
+                        // Удаляем каждый выбранный элемент из контекста
+                        foreach (var item in selectedItems)
+                        {
+                            context.ProductSale.Remove(item);
+                        }
+
+                        // Сохраняем изменения в базе данных
+                        context.SaveChanges();
+                        //BebkoГлазкиSaveEntities.GetContext().ProductSale.Remove(currentProductSale);
+                        // BebkoГлазкиSaveEntities.GetContext().ProductSale.Remove(currentProductSale);
+
+                        // BebkoГлазкиSaveEntities.GetContext().SaveChanges();
+
+
+
+
+
+                        //  LVHistory.ItemsSource = context.ProductSale.ToList();
+
+
+
+                        LoadProductSalesForCurrentAgent();
+
+
+                        MessageBox.Show("Элементы успешно удалены.");
+                    }
+                   
+                
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+            }
         }
 
         private void ProdData_TextChanged(object sender, TextChangedEventArgs e)
@@ -118,6 +175,11 @@ namespace Бебко_Глазки_save
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LVHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

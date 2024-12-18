@@ -24,7 +24,7 @@
 
            
 
-            <ListView Height="100" Width="350" Name="LVHistory" FontSize="10">
+            <ListView Height="100" Width="350" Name="LVHistory" FontSize="10" SelectionChanged="LVHistory_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -50,7 +50,8 @@
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" >
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,20" Orientation="Horizontal" Grid.Column="1">
                 <TextBlock Text=" продукт: "></TextBlock>
-                <ComboBox Name="ComboBoxProduct" Width="300" Height="30" Margin="10,0,0,0" Text="{Binding Product.Title}"></ComboBox>
+                <ComboBox Name="ComboBoxProduct" Width="200" Height="30" Margin="10,0,0,0" FontSize="15" Text="{Binding Product.Title}"></ComboBox>
+                <TextBox Width="50" Margin="5" Name="ProdSearc" Height="30" FontSize="15"></TextBox>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
