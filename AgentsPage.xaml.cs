@@ -53,6 +53,7 @@ namespace Бебко_Глазки_save
         private void UpdateServices()
         {
             var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
+         //   this.DataContext = currentAgents;
             if (ComboType.SelectedIndex == 0)
             {
 

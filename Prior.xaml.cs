@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +25,7 @@ namespace Бебко_Глазки_save
         public Prior(List<Agent> agents)
         {
             InitializeComponent();
-            var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
+          //  var currentAgents_5 = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
             _currentAgents = agents;
             int maxPriority = _currentAgents.Max(a => a.Priority);
             TBChangePrior.Text = maxPriority.ToString();
@@ -41,21 +42,37 @@ namespace Бебко_Глазки_save
                 //нахождение максимального приоритета
             }
             
-
+            */
             if (int.TryParse(TBChangePrior.Text, out int newPriority) && newPriority != 0)
             {
-                BebkoГлазкиSaveEntities.GetContext().SaveChanges();
+                // using (var context_8 = BebkoГлазкиSaveEntities.GetContext())
+                // {
+                var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
+                // Обновляем приоритет для каждого агента
+                foreach (var agent in _currentAgents)
+                    {
+                        agent.Priority = newPriority; // Устанавливаем новый приоритет
+                    }
 
+                // Сохраняем изменения в базе данных
+              //  currentAgents.SaveChanges();
+              //  }
+
+                // Сохраняем изменения в базе данных
+                //context.SaveChanges();
+                BebkoГлазкиSaveEntities.GetContext().SaveChanges();
                 //{ Binding Agent.Priority = TBChangePrior.Text};
                 MessageBox.Show("Приоритеты обновлены!");
-
+                this.Close();
+                //var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
 
             }
             else
             {
                 MessageBox.Show("приоритеты оставлены без изменений.");
+                this.Close();
             }
-            */
+           
 
         }
 
