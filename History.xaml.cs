@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,10 +23,16 @@ namespace Бебко_Глазки_save
     {
      
         private Agent currentAgent = new Agent();
+        private List<Product> Items;
+
+     //   private Agent currentAgent = new Agent();
+        private List<Product> _allProducts; // Список всех продуктов
+        private List<ProductSale> _currentProductSales; // Список текущих продаж
+
         public History(Agent SelectedAgent)
         {
             InitializeComponent();
-
+            LoadItems();
 
             if (SelectedAgent != null)
             {
@@ -49,6 +56,7 @@ namespace Бебко_Глазки_save
 
 
 
+
             var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
 
             DataContext = SelectedAgent;
@@ -57,6 +65,10 @@ namespace Бебко_Глазки_save
       
 
             this.DataContext = currentAgents;
+
+            // Загружаем все продукты и устанавливаем источник данных для ComboBox
+            _allProducts = BebkoГлазкиSaveEntities.GetContext().Product.ToList();
+            ComboBoxProduct.ItemsSource = _allProducts;
         }
         /*
     private void LoadProductSale()
@@ -71,6 +83,67 @@ namespace Бебко_Глазки_save
 
     }
          */
+
+
+
+        private void LoadCurrentProductSales()
+        {
+            _currentProductSales = BebkoГлазкиSaveEntities.GetContext().ProductSale
+                .Where(ps => ps.AgentID == currentAgent.ID)
+                .ToList();
+
+            LVHistory.ItemsSource = _currentProductSales; // Устанавливаем источник данных для списка продаж
+        }
+
+
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            // Получаем выбранный продукт из ComboBox
+            var selectedProduct = ComboBoxProduct.SelectedItem as Product;
+
+            // Получаем количество из TextBox (например, для количества продукта)
+            int productCount;
+            if (!int.TryParse(ProdCount.Text, out productCount) || productCount <= 0)
+            {
+                MessageBox.Show("Пожалуйста, введите корректное количество.");
+                return;
+            }
+
+            if (selectedProduct != null)
+            {
+                // Создаем новый объект ProductSale
+                var newSale = new ProductSale
+                {
+                    AgentID = currentAgent.ID, // Указываем ID агента
+                    ProductID = selectedProduct.ID, // Указываем ID выбранного продукта
+                    SaleDate = ProdDate.SelectedDate ?? DateTime.Now, // Указываем дату продажи (если выбрана)
+                    ProductCount = productCount // Указываем количество, введенное пользователем
+                };
+
+                // Добавляем новый объект в контекст и сохраняем изменения
+                BebkoГлазкиSaveEntities.GetContext().ProductSale.Add(newSale);
+                BebkoГлазкиSaveEntities.GetContext().SaveChanges();
+
+                MessageBox.Show("информация сохранена");
+
+                // Обновляем список продаж
+                LoadCurrentProductSales();
+
+                // Очистка полей ввода (по желанию)
+                ComboBoxProduct.SelectedItem = null;
+                ProdCount.Clear();
+                ProdDate.SelectedDate = null;
+                ProdSearc.Text = ""; // Очищает текстовое поле
+
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите продукт для добавления.");
+            }
+        }
+
+
         private void LoadProductName()
     {
         var ProductName= BebkoГлазкиSaveEntities.GetContext().Product.ToList();
@@ -174,14 +247,96 @@ namespace Бебко_Глазки_save
 
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void LVHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+     
+
+        private List<string> allProducts = new List<string>();
+        private void ProdSearc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+
+           
+            
+                // Получаем текст из TextBox и преобразуем в нижний регистр
+                string searchText = ProdSearc.Text.ToLower();
+
+                // Фильтруем элементы на основе текста поиска
+                var filteredItems = Items.Where(p => p.Title.ToLower().Contains(searchText)).ToList();
+
+                // Устанавливаем источник данных для ComboBox
+                ComboBoxProduct.ItemsSource = filteredItems;
+
+                // Если ничего не найдено, показываем все элементы
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    ComboBoxProduct.ItemsSource = Items;
+                }
+            
+        }
+
+
+
+        private void LoadItems()
+        {
+            // Здесь вы загружаете элементы из базы данных
+            Items = BebkoГлазкиSaveEntities.GetContext().Product.ToList();
+
+            // Устанавливаем источник данных для ComboBox
+            ComboBoxProduct.ItemsSource = Items;
+        }
+
+        private void ComboBoxProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBoxProduct.SelectedItem is Product selectedProduct)
+            {
+                // Подставляем значение Title в TextBox
+                ProdSearc.Text = selectedProduct.Title; // Убедитесь, что у вас есть TextBox с именем ProdSearc
+            }
+            /*
+            string searchText = ProdSearc.Text.ToLower(); // Получаем текст из TextBox и преобразуем в нижний регистр
+
+            ComboBoxProduct.Items.Clear(); // Очищаем существующие элементы в ComboBox
+
+            // Фильтруем элементы на основе текста поиска
+            var filteredProducts = allProducts.Where(item => item.ToLower().StartsWith(searchText)).ToList();
+
+            // Добавляем отфильтрованные элементы обратно в ComboBox
+            foreach (var product in filteredProducts)
+            {
+                ComboBoxProduct.Items.Add(product); // Добавляем каждый элемент по одному
+            }
+
+            // Опционально, устанавливаем фокус на ComboBox, чтобы показать выпадающий список
+            if (ComboBoxProduct.Items.Count > 0)
+            {
+                ComboBoxProduct.Focus(); // Устанавливаем фокус на ComboBox
+                ComboBoxProduct.IsDropDownOpen = true; // Открываем выпадающий список
+            }
+
+
+            
+            string searchText = ProdSearc.Text.ToLower(); // Получаем текст из TextBox и преобразуем в нижний регистр
+
+
+            ComboBoxProduct.Items.Clear(); // Очищаем существующие элементы в ComboBox
+
+            // Фильтруем элементы на основе текста поиска
+            var filteredProducts = allProducts.Where(item => item.ToLower().StartsWith(searchText)).ToList();
+
+            // Добавляем отфильтрованные элементы обратно в ComboBox
+            ComboBoxProduct.Items.AddRange(filteredProducts.ToArray());
+
+            // Опционально, открываем выпадающий список, если есть соответствующие элементы
+            if (ComboBoxProduct.Items.Count > 0)
+            {
+                ComboBoxProduct.DroppedDown = true; // Показываем выпадающий список
+            }*/
         }
     }
 }

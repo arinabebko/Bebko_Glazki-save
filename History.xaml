@@ -50,8 +50,8 @@
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" >
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,20" Orientation="Horizontal" Grid.Column="1">
                 <TextBlock Text=" продукт: "></TextBlock>
-                <ComboBox Name="ComboBoxProduct" Width="200" Height="30" Margin="10,0,0,0" FontSize="15" Text="{Binding Product.Title}"></ComboBox>
-                <TextBox Width="50" Margin="5" Name="ProdSearc" Height="30" FontSize="15"></TextBox>
+                <ComboBox Name="ComboBoxProduct" Width="200" Height="30" Margin="10,0,0,0" FontSize="15" Text="{Binding Product.Title}" SelectionChanged="ComboBoxProduct_SelectionChanged"></ComboBox>
+                <TextBox Width="50" Margin="5" Name="ProdSearc" Height="30" FontSize="15" TextChanged="ProdSearc_TextChanged"></TextBox>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">

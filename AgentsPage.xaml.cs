@@ -36,15 +36,17 @@ namespace Бебко_Глазки_save
         {
             InitializeComponent();
             var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
-          //  var sales = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
+            //  var sales = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
+            AgentsListView.Items.Refresh();
             AgentsListView.ItemsSource = currentAgents;
+            AgentsListView.Items.Refresh();
             this.DataContext = currentAgents;
             //   var currentProductSale = BebkoГлазкиSaveEntities.GetContext().ProductSale.ToList();
             //AgentsListView.ItemsSource = currentProductSale;
             ComboType.SelectedIndex = 0;
             ComboSort.SelectedIndex = 0;
             UpdateServices();
-
+            AgentsListView.Items.Refresh();
 
         }
 
@@ -208,6 +210,7 @@ namespace Бебко_Глазки_save
 
         private void ChangePage(int direction, int? selectedPage)
         {
+
             CurrentPageList.Clear();
             CountRecords = TableList.Count;
 
@@ -373,7 +376,7 @@ namespace Бебко_Глазки_save
     // Открываем его как модальное окно
     priorWindow.ShowDialog();
 
-
+            AgentsListView.Items.Refresh();
 
 
 
@@ -394,6 +397,7 @@ namespace Бебко_Глазки_save
         private void BtnRealiz_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new History((sender as Button).DataContext as Agent));
+            AgentsListView.Items.Refresh();
         }
     }
 }

@@ -43,20 +43,23 @@ namespace Бебко_Глазки_save
             }
             
             */
-            if (int.TryParse(TBChangePrior.Text, out int newPriority) && newPriority != 0)
+
+
+
+            if (int.TryParse(TBChangePrior.Text, out int newPriority) && newPriority != 0 && newPriority > 0)
             {
                 // using (var context_8 = BebkoГлазкиSaveEntities.GetContext())
                 // {
                 var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
                 // Обновляем приоритет для каждого агента
                 foreach (var agent in _currentAgents)
-                    {
-                        agent.Priority = newPriority; // Устанавливаем новый приоритет
-                    }
+                {
+                    agent.Priority = newPriority; // Устанавливаем новый приоритет
+                }
 
                 // Сохраняем изменения в базе данных
-              //  currentAgents.SaveChanges();
-              //  }
+                //  currentAgents.SaveChanges();
+                //  }
 
                 // Сохраняем изменения в базе данных
                 //context.SaveChanges();
@@ -64,13 +67,22 @@ namespace Бебко_Глазки_save
                 //{ Binding Agent.Priority = TBChangePrior.Text};
                 MessageBox.Show("Приоритеты обновлены!");
                 this.Close();
+
                 //var currentAgents = BebkoГлазкиSaveEntities.GetContext().Agent.ToList();
 
             }
             else
             {
-                MessageBox.Show("приоритеты оставлены без изменений.");
-                this.Close();
+                if (newPriority < 0)
+                {
+
+                    MessageBox.Show("приоритет не может быть отрицательным числом");
+                }
+                else
+                {
+                    MessageBox.Show("приоритеты оставлены без изменений.");
+                    this.Close();
+                }
             }
            
 

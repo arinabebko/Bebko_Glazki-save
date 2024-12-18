@@ -30,6 +30,7 @@ namespace Бебко_Глазки_save
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.GoBack();
+      
         }
 
         private void MainFrame_ContentRendered(object sender, EventArgs e)
