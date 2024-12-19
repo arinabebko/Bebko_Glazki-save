@@ -127,11 +127,11 @@ namespace Бебко_Глазки_save
             }
             if (ComboSort.SelectedIndex == 3)
             {
-                currentAgents = currentAgents.OrderBy(p => p.Title).ToList();
+                currentAgents = currentAgents.OrderBy(p => p.Discount).ToList();
             }
             if (ComboSort.SelectedIndex == 4)
             {
-                currentAgents = currentAgents.OrderByDescending(p => p.Title).ToList();
+                currentAgents = currentAgents.OrderByDescending(p => p.Discount).ToList();
             }
             if (ComboSort.SelectedIndex == 5)
             {

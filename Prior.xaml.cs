@@ -46,7 +46,7 @@ namespace Бебко_Глазки_save
 
 
 
-            if (int.TryParse(TBChangePrior.Text, out int newPriority) && newPriority != 0 && newPriority > 0)
+            if (int.TryParse(TBChangePrior.Text, out int newPriority)  && newPriority >= 0)
             {
                 // using (var context_8 = BebkoГлазкиSaveEntities.GetContext())
                 // {
@@ -80,7 +80,8 @@ namespace Бебко_Глазки_save
                 }
                 else
                 {
-                    MessageBox.Show("приоритеты оставлены без изменений.");
+                
+                        MessageBox.Show("приоритеты оставлены без изменений.");
                     this.Close();
                 }
             }

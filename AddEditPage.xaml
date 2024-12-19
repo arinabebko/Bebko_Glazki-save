@@ -53,7 +53,7 @@
                 </Image.Source>
             </Image>
 
-            <Button Content="Изменить" Name="ChangePictureBtn" Click="ChangePictureBtn_Click"></Button>
+            <Button Content="Изменить" Name="ChangePictureBtn" Click="ChangePictureBtn_Click" FontSize="15" ></Button>
         </StackPanel>
 
 
@@ -113,9 +113,9 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal">
-            <Button Content="Сохранить" Name="SaveBtn" Margin="5" Click="SaveBtn_Click"></Button>
-            <Button Content="Удалить" Name="DeleteBtn" Margin="5" Click="DeleteBtn_Click"  Opacity="{Binding ID}"></Button>
-            <Button Content="продукты" Name="BtnRealiz" Click="BtnRealiz_Click"  Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" ></Button>
+            <Button Content="Сохранить" Name="SaveBtn" Margin="5" Click="SaveBtn_Click" Width="100" FontSize="15"></Button>
+            <Button Content="Удалить" Name="DeleteBtn" Margin="5" Click="DeleteBtn_Click" Width="100" FontSize="15" Opacity="{Binding ID}"></Button>
+            <Button Content="история реализации" Name="BtnRealiz" Click="BtnRealiz_Click"  Width="160" Height="30" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" ></Button>
 
 
         </StackPanel>

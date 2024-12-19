@@ -113,12 +113,12 @@
 
 
                         <WrapPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" >
-                            <Button Content="редактировать" Name="BtnEdit" Click="BtnEdit_Click" Width="200" Height="30" Margin="10"></Button>
+                            <Button Content="редактировать" FontSize="18" Name="BtnEdit" Click="BtnEdit_Click" Width="200" Height="30" Margin="10"></Button>
 
                         </WrapPanel>
 
 
-                        <Button Content="продукты" Name="BtnRealiz" Click="BtnRealiz_Click"  Width="200" Height="30" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" ></Button>
+                        <Button Content="история реализации" FontSize="18" Name="BtnRealiz" Click="BtnRealiz_Click"  Width="200" Height="30" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" ></Button>
 
 
 
